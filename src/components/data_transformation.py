@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder,LabelEncoder,StandardScaler
+from sklearn.preprocessing import OneHotEncoder,StandardScaler
 from src.exception import CustomException
 from src.logger import logging
 import os
@@ -43,7 +43,7 @@ class DataTransformation:
                            steps=[
                                
                                ("imputer",SimpleImputer(strategy="most_frequent")),
-                               ("OneHotEncoder",OneHotEncoder()),
+                               ("OneHotEncoder",OneHotEncoder(handle_unknown='ignore')),
                                ("scaler",StandardScaler(with_mean=False))
                            ]
 
